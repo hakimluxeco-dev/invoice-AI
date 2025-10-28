@@ -1,6 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
-import { DollarSign, ShoppingCart, TrendingUp, ArrowUpRight, ArrowDownRight } from "lucide-react";
+import { ShoppingCart, TrendingUp, ArrowUpRight, ArrowDownRight, Banknote } from "lucide-react";
 import DashboardLayout from "../layout/DashboardLayout";
 
 const metrics = [
@@ -9,7 +9,7 @@ const metrics = [
     value: "R45,231.89",
     change: "+20.1%",
     trend: "up",
-    icon: DollarSign,
+    icon: Banknote,
     color: "from-green-500 to-emerald-600",
   },
   {
@@ -40,10 +40,34 @@ const salesData = [
 ];
 
 const recentActivity = [
-  { id: 1, invoice: "INV-001", amount: "R1,234.56", status: "Paid", date: "2024-01-15" },
-  { id: 2, invoice: "INV-002", amount: "R987.65", status: "Pending", date: "2024-01-14" },
-  { id: 3, invoice: "INV-003", amount: "R2,345.67", status: "Paid", date: "2024-01-13" },
-  { id: 4, invoice: "INV-004", amount: "R567.89", status: "Overdue", date: "2024-01-12" },
+  {
+    id: 1,
+    invoice: "INV-001",
+    amount: "R1,234.56",
+    status: "Paid",
+    date: "2024-01-15",
+  },
+  {
+    id: 2,
+    invoice: "INV-002",
+    amount: "R987.65",
+    status: "Pending",
+    date: "2024-01-14",
+  },
+  {
+    id: 3,
+    invoice: "INV-003",
+    amount: "R2,345.67",
+    status: "Paid",
+    date: "2024-01-13",
+  },
+  {
+    id: 4,
+    invoice: "INV-004",
+    amount: "R567.89",
+    status: "Overdue",
+    date: "2024-01-12",
+  },
 ];
 
 export default function Dashboard() {
@@ -105,15 +129,21 @@ export default function Dashboard() {
           <Card className="bg-gradient-to-br from-slate-900 to-slate-800 border-slate-700">
             <CardHeader>
               <CardTitle className="text-white">Sales Analytics</CardTitle>
-              <p className="text-sm text-slate-400">Monthly sales performance</p>
+              <p className="text-sm text-slate-400">
+                Monthly sales performance
+              </p>
             </CardHeader>
             <CardContent>
               <div className="space-y-4">
                 {salesData.map((data) => (
                   <div key={data.month} className="space-y-2">
                     <div className="flex items-center justify-between text-sm">
-                      <span className="text-slate-400 font-medium">{data.month}</span>
-                      <span className="text-white font-semibold">{data.value}%</span>
+                      <span className="text-slate-400 font-medium">
+                        {data.month}
+                      </span>
+                      <span className="text-white font-semibold">
+                        {data.value}%
+                      </span>
                     </div>
                     <Progress
                       value={data.value}
@@ -130,7 +160,9 @@ export default function Dashboard() {
           <Card className="bg-gradient-to-br from-slate-900 to-slate-800 border-slate-700">
             <CardHeader>
               <CardTitle className="text-white">Recent Activity</CardTitle>
-              <p className="text-sm text-slate-400">Latest invoice transactions</p>
+              <p className="text-sm text-slate-400">
+                Latest invoice transactions
+              </p>
             </CardHeader>
             <CardContent>
               <div className="space-y-4">
@@ -140,18 +172,22 @@ export default function Dashboard() {
                     className="flex items-center justify-between p-3 rounded-lg bg-slate-800/50 hover:bg-slate-800 transition-colors"
                   >
                     <div className="space-y-1">
-                      <p className="text-sm font-medium text-white">{activity.invoice}</p>
+                      <p className="text-sm font-medium text-white">
+                        {activity.invoice}
+                      </p>
                       <p className="text-xs text-slate-400">{activity.date}</p>
                     </div>
                     <div className="text-right space-y-1">
-                      <p className="text-sm font-semibold text-white">{activity.amount}</p>
+                      <p className="text-sm font-semibold text-white">
+                        {activity.amount}
+                      </p>
                       <span
                         className={`text-xs px-2 py-1 rounded-full ${
                           activity.status === "Paid"
                             ? "bg-green-500/20 text-green-400"
                             : activity.status === "Pending"
-                            ? "bg-yellow-500/20 text-yellow-400"
-                            : "bg-red-500/20 text-red-400"
+                              ? "bg-yellow-500/20 text-yellow-400"
+                              : "bg-red-500/20 text-red-400"
                         }`}
                       >
                         {activity.status}
